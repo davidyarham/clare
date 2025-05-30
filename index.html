@@ -107,8 +107,16 @@
       const video = document.querySelector("video");
 
       start.addEventListener("click", () => {
-        audio.play();
-        video.play();
+        audio.addEventListener("canplaythrough", () => {
+          audio.play();
+        });
+
+        video.addEventListener("canplaythrough", () => {
+          video.play();
+        });
+
+        //audio.play();
+        //video.play();
         start.style.display = "none";
       });
     </script>
