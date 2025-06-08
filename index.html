@@ -63,12 +63,13 @@
         align-items: space-between;
         justify-content: space-between;
         min-height: 100dvh;
-        padding: 40px 20px;
+        padding: 30px 10px;
         display: none;
         gap: 40px;
-        &.show {
-          display: flex;
-        }
+      }
+
+      .invite__inner.show {
+        display: flex;
       }
 
       h1 {
@@ -80,11 +81,16 @@
         font-weight: 200;
         paint-order: stroke fill;
         line-height: 1.2em;
-        -webkit-text-stroke-width: 0.2em;
-        -webkit-text-stroke-color: #000000;
-        text-stroke-width: 0.3em;
-        text-stroke-color: rgba(0, 0, 0, 0.5);
-        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+        color: white;
+      }
+      @supports (-webkit-text-stroke-width: 0.2em) {
+        h1 {
+          -webkit-text-stroke-width: 0.2em;
+          -webkit-text-stroke-color: #000000;
+          text-stroke-width: 0.3em;
+          text-stroke-color: rgba(0, 0, 0, 0.5);
+          filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+        }
       }
       h1 span.large {
         font-size: 3.5em;
@@ -105,44 +111,62 @@
         flex-direction: column;
         text-align: center;
         gap: 20px;
-
         color: black;
         z-index: 100;
         container-type: inline-size;
         line-height: 4.2cqw;
-        .line {
-          min-width: 1px;
-          border: 1px dashed rgba(0, 0, 0, 0.3);
-          height: 100px;
-        }
-        * {
-          /* outline: 1px solid red; */
-        }
-        .row {
+        margin-top: 40px;
+      }
+
+      .details .line {
+        min-width: 1px;
+        border: 1px dashed rgba(0, 0, 0, 0.3);
+        height: 100px;
+      }
+
+      .details .row {
+        letter-spacing: 0.3em;
+        font-size: 10px;
+      }
+
+      .details .row a {
+        color: black !important;
+      }
+
+      .details .row-col {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto 1fr;
+        gap: 10px;
+        align-items: center;
+      }
+
+      @supports (font-size: 3.2cqw) {
+        .details .row {
           font-size: 3.2cqw;
-          letter-spacing: 0.3em;
-          a {
-            color: black !important;
-          }
         }
-        .row-col {
-          display: grid;
-          grid-template-columns: 1fr auto auto auto 1fr;
-          gap: 10px;
-          align-items: center;
-          .col2 {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 5cqw;
-            display: flex;
-            flex-direction: column;
-            font-weight: 600;
-            span {
-              font-size: 20cqw;
-              font-weight: 700;
-              margin-top: -0.05em;
-              line-height: 1;
-            }
-          }
+      }
+
+      .details .row-col .col2 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+      }
+
+      .details .row-col .col2 span {
+        font-size: 30px;
+        font-weight: 700;
+        margin-top: -0.05em;
+        line-height: 1;
+      }
+
+      @supports (font-size: 3.2cqw) {
+        .details .row-col .col2 {
+          font-size: 5cqw;
+        }
+        .details .row-col .col2 span {
+          font-size: 20cqw;
         }
       }
 
@@ -165,12 +189,6 @@
         align-items: center;
         justify-content: center;
         border: 10px solid #ffffff;
-        &:after {
-          content: "Click to Open Invite";
-          position: absolute;
-          width: max-content;
-          margin-top: 180px;
-        }
       }
     </style>
   </head>
@@ -220,20 +238,7 @@
         </div>
       </div>
     </div>
-    <button id="start">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-6"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </button>
+    <button id="start">OPEN</button>
     <script>
       const start = document.querySelector("#start");
       const audio = document.querySelector("audio");
