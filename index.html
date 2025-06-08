@@ -247,10 +247,14 @@
         video.addEventListener("canplaythrough", () => {
           video.play();
         });
-        invite.classList.add("show");
         audio.play();
         video.play();
         start.style.display = "none";
+        invite.classList.add("show");
+        setTimeout(() => {
+          invite.classList.add("show");
+          start.style.display = "none";
+        }, 1000);
       });
       // invite.classList.add("show");
       // start.style.display = "none";
